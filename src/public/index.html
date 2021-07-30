@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.socket.io/4.1.2/socket.io.min.js" integrity="sha384-toS6mmwu70G0fw54EGlWWeA4z3dyJ+dlXBtSURSKN4vyRFOcxd3Bzjj/AoOwY+Rg" crossorigin="anonymous"></script>
+    <title>Socket.io</title>
+    <script>
+        const socket = io('http://localhost:8080', {
+            transports: ['websocket']
+        });
+
+        socket.on('teste', (res) => {
+            escreverMensagem(res.usuario, res.mensagem);
+        });
+
+        function enviar() {
+            const usuario = document.querySelector('#usuario').value
+            const mensagem = document.querySelector('#mensagem').value
+
+            socket.emit('teste', {
+                usuario, mensagem
+            })
+
+            escreverMensagem('EU', mensagem);
+        };
+
+        function escreverMensagem(usuario, mensagem) {
+            let mensagemhtml = document.querySelector('#mensagens').innerHTML;
+            mensagemhtml += `<p><strong>${usuario}</strong> - ${mensagem}</p>`
+            document.querySelector('#mensagens').innerHTML = mensagemhtml;
+        }
+    </script>
+</head>
+<body>
+    <input id="usuario" placeholder="informar o usuario" />
+    <hr/>
+    <textarea id="mensagem"></textarea>
+    <br/>
+    <button onclick="enviar()">ENVIAR</button>
+    <hr/>
+    <h3>MENSAGENS</h3>
+    <div id="mensagens"></div>
+</body>
+</html>
