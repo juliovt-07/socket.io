@@ -1,4 +1,4 @@
-# Welcome to socket.io 👋
+# socket.io
 [![Version](https://img.shields.io/npm/v/socket.io.svg)](https://www.npmjs.com/package/socket.io)
 [![License: ISC](https://img.shields.io/badge/License-ISC-yellow.svg)](#)
 
@@ -21,8 +21,4 @@ npm run test
 
 ## Show your support
 
-Give a ⭐️ if this project helped you!
-
-
-***
-_This README was generated with ❤️ by [readme-md-generator](https://github.com/kefranabg/readme-md-generator)_
+Give a ⭐️!
